@@ -165,7 +165,7 @@ export default function InteractiveEntrance({ onComplete }) {
             {/* Elegant Floating Portrait Card / Cutout */}
             <div className="relative w-36 sm:w-48 md:w-56 aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#D8C8AD] bg-[#EAE3D5]">
               <img
-                src={personalInfo.profileImage}
+                src={personalInfo.walkingImage || personalInfo.profileImage}
                 alt={personalInfo.name}
                 className="w-full h-full object-cover object-top filter contrast-105"
               />

@@ -24,7 +24,8 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/shaik-sameer-401953301/",
   github: "https://github.com/Shaik66-pro",
   resumeUrl: "/Shaik_Sameer_Resume.pdf",
-  profileImage: "/sameer_suit.png",
+  profileImage: "/sameer_studio.png",
+  walkingImage: "/sameer_suit.png",
   primaryLanguage: "PYTHON",
   establishedYear: "2026",
 };
