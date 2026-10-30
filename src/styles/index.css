@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom Sleek Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070709;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #282834;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e4ff1a;
+  }
+}
+
+@layer utilities {
+  /* 3D Extruded Block Typography (Inspired by Reference Video) */
+  .text-3d-white {
+    text-shadow: 
+      0 1px 0 #cccccc,
+      0 2px 0 #b3b3b3,
+      0 3px 0 #999999,
+      0 4px 0 #808080,
+      0 6px 15px rgba(0, 0, 0, 0.7);
+  }
+
+  .text-3d-yellow {
+    text-shadow: 
+      0 1px 0 #c2db07,
+      0 2px 0 #a4ba05,
+      0 3px 0 #859604,
+      0 5px 12px rgba(228, 255, 26, 0.4);
+  }
+
+  .text-3d-stamped {
+    text-shadow:
+      0 -1px 0 rgba(0, 0, 0, 0.8),
+      0 1px 0 rgba(255, 255, 255, 0.3),
+      0 3px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .text-outline-giant {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.18);
+    color: transparent;
+  }
+
+  .text-outline-yellow {
+    -webkit-text-stroke: 1.5px rgba(228, 255, 26, 0.7);
+    color: transparent;
+  }
+
+  /* Cyber Grid Background */
+  .bg-grid-cyber {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .bg-grid-dots {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  }
+
+  /* Paper texture overlay for Chapter cards */
+  .bg-noise {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+    background-size: 4px 4px;
+  }
+
+  /* Highlighter Pen Effect */
+  .highlighter-yellow {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+  .highlighter-yellow::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -4px;
+    right: -4px;
+    height: 38%;
+    background: #e4ff1a;
+    z-index: -1;
+    transform: rotate(-0.5deg);
+    border-radius: 2px;
+    opacity: 0.9;
+  }
+
+  /* Glossy Pill Glass Style */
+  .glass-pill {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
