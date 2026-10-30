@@ -4,11 +4,8 @@ import {
   Trophy,
   Users,
   CheckCircle2,
-  Calendar,
   MapPin,
-  Cpu,
-  ShieldCheck,
-  Award,
+  Clock,
 } from 'lucide-react';
 import { experienceData, achievementsData } from '../data/portfolioData';
 
@@ -19,7 +16,7 @@ export default function Experience() {
       <div className="absolute inset-0 bg-grid-cyber opacity-25 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Chapter 04 Header */}
         <div className="mb-16 border-b border-[#292D32] pb-10">
           <div className="flex items-center gap-2 font-mono text-xs tracking-widest text-[#A5A7AE] uppercase mb-3">
@@ -34,42 +31,52 @@ export default function Experience() {
             THE EVIDENCE
           </h2>
           <p className="font-mono text-xs sm:text-sm text-[#A5A7AE] mt-3 max-w-xl uppercase tracking-wider">
-            Verified Industrial Automation Exposure, Software Engineering Work, and Robotics Achievements.
+            Verified Industrial & Training Internship Exposure, Software Engineering Work, and Robotics Achievements.
           </p>
         </div>
 
-        {/* 2-Column Layout: Work Experience (Left) & Honors / Leadership (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Left Column: Polmon Instruments Work Experience (Prompt Section 11) */}
-          <div className="lg:col-span-7 flex flex-col">
-            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#D7FF00] mb-6">
-              <Briefcase className="w-4 h-4" />
-              <span>INDUSTRIAL WORK EXPERIENCE</span>
-            </div>
+        {/* Top Section: Two Experience Cards Side by Side */}
+        <div className="mb-14">
+          <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#D7FF00] mb-6">
+            <Briefcase className="w-4 h-4" />
+            <span>WORK EXPERIENCE & TRAINING INTERNSHIPS</span>
+          </div>
 
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {experienceData.map((exp, idx) => (
               <div
                 key={idx}
-                className="bg-[#111317] rounded-2xl border border-[#292D32] p-6 sm:p-8 shadow-2xl flex flex-col justify-between hover:border-[#D7FF00]/50 transition-colors"
+                className="bg-[#111317] rounded-2xl border border-[#292D32] p-6 sm:p-7 shadow-2xl flex flex-col justify-between hover:border-[#D7FF00]/50 transition-colors"
               >
                 {/* Header */}
                 <div className="border-b border-[#292D32] pb-5 mb-5">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2 font-mono text-xs">
                     <span className="px-2.5 py-1 rounded bg-[#D7FF00] text-[#08090B] font-bold uppercase">
-                      {exp.department} DEPARTMENT
+                      {exp.department}
                     </span>
-                    <span className="font-bold text-[#A5A7AE]">
-                      {exp.type}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-3 h-3 text-[#A5A7AE]" />
+                      <span className="font-bold text-[#A5A7AE]">
+                        {exp.duration}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">
+                  <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mt-1">
                     {exp.company}
                   </h3>
 
-                  <div className="font-serifDisplay italic text-xl text-[#D7FF00] mt-0.5">
+                  <div className="font-serifDisplay italic text-lg text-[#D7FF00] mt-0.5">
                     {exp.role}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 mt-2">
+                    <span className="px-2 py-0.5 rounded bg-white/5 border border-[#292D32] font-mono text-[10px] text-zinc-300 uppercase">
+                      {exp.designation}
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-[#D7FF00]/10 border border-[#D7FF00]/20 font-mono text-[10px] text-[#D7FF00] uppercase">
+                      {exp.employmentType}
+                    </span>
                   </div>
 
                   <div className="flex items-center gap-2 font-mono text-xs text-[#A5A7AE] mt-2">
@@ -78,12 +85,12 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Verified Work Exposure Highlights */}
-                <div className="space-y-3 mb-6">
+                {/* Highlights */}
+                <div className="space-y-2.5 mb-5 flex-1">
                   <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-[#A5A7AE]">
-                    VERIFIED TECHNICAL WORK HIGHLIGHTS:
+                    VERIFIED WORK HIGHLIGHTS:
                   </h4>
-                  <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-zinc-300">
+                  <ul className="space-y-2 font-sans text-xs sm:text-sm text-zinc-300">
                     {exp.highlights.map((highlight, hIdx) => (
                       <li key={hIdx} className="flex items-start gap-2.5 bg-[#08090B]/60 p-2.5 rounded-lg border border-[#292D32]/60">
                         <CheckCircle2 className="w-4 h-4 text-[#D7FF00] shrink-0 mt-0.5" />
@@ -93,7 +100,7 @@ export default function Experience() {
                   </ul>
                 </div>
 
-                {/* Technical Tags */}
+                {/* Tags */}
                 <div className="pt-4 border-t border-[#292D32]">
                   <div className="flex flex-wrap gap-1.5">
                     {exp.tags.map((tag) => (
@@ -109,19 +116,21 @@ export default function Experience() {
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Right Column: Achievements & Leadership (Prompt Section 12) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#D7FF00] mb-6">
-              <Trophy className="w-4 h-4" />
-              <span>COMPETITIVE ACHIEVEMENTS & LEADERSHIP</span>
-            </div>
+        {/* Bottom Section: Achievements & Leadership */}
+        <div>
+          <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#D7FF00] mb-6">
+            <Trophy className="w-4 h-4" />
+            <span>COMPETITIVE ACHIEVEMENTS & LEADERSHIP</span>
+          </div>
 
-            <div className="space-y-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-8 space-y-4">
               {achievementsData.map((ach) => (
                 <div
                   key={ach.id}
-                  className="bg-[#111317] rounded-2xl border border-[#292D32] p-6 shadow-xl flex items-start gap-5 hover:border-[#D7FF00]/50 transition-colors"
+                  className="bg-[#111317] rounded-2xl border border-[#292D32] p-5 sm:p-6 shadow-xl flex items-start gap-5 hover:border-[#D7FF00]/50 transition-colors"
                 >
                   <div className="w-16 h-16 shrink-0 rounded-xl bg-[#08090B] border border-[#D7FF00]/40 text-[#D7FF00] flex items-center justify-center font-display font-black text-2xl shadow-md">
                     {ach.stat}
@@ -140,7 +149,9 @@ export default function Experience() {
                   </div>
                 </div>
               ))}
+            </div>
 
+            <div className="lg:col-span-4 flex flex-col gap-4">
               {/* Department Coordinator Highlight Card */}
               <div className="p-6 rounded-2xl bg-[#D7FF00] text-[#08090B] font-mono flex items-center gap-4 shadow-glow-yellow">
                 <div className="p-3 rounded-xl bg-[#08090B] text-[#D7FF00]">
@@ -153,6 +164,26 @@ export default function Experience() {
                   <span className="text-xs text-zinc-900 block mt-0.5 font-sans">
                     Led technical symposiums, hackathons, and multi-team engineering events at MLRIT.
                   </span>
+                </div>
+              </div>
+
+              {/* Summary Stats */}
+              <div className="bg-[#111317] rounded-2xl border border-[#292D32] p-5 grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <div className="font-display font-black text-3xl text-[#D7FF00]">2</div>
+                  <div className="font-mono text-[10px] text-[#A5A7AE] uppercase tracking-wider mt-1">Internships</div>
+                </div>
+                <div className="text-center">
+                  <div className="font-display font-black text-3xl text-[#D7FF00]">6+</div>
+                  <div className="font-mono text-[10px] text-[#A5A7AE] uppercase tracking-wider mt-1">Months Training</div>
+                </div>
+                <div className="text-center">
+                  <div className="font-display font-black text-3xl text-[#D7FF00]">2</div>
+                  <div className="font-mono text-[10px] text-[#A5A7AE] uppercase tracking-wider mt-1">1st Place Wins</div>
+                </div>
+                <div className="text-center">
+                  <div className="font-display font-black text-3xl text-[#D7FF00]">85+</div>
+                  <div className="font-mono text-[10px] text-[#A5A7AE] uppercase tracking-wider mt-1">Team Members Led</div>
                 </div>
               </div>
             </div>

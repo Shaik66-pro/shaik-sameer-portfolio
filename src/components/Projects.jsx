@@ -16,7 +16,7 @@ import {
   ShieldCheck,
   CheckCircle,
 } from 'lucide-react';
-import { sevenProjects, personalInfo } from '../data/portfolioData';
+import { sixProjects, personalInfo } from '../data/portfolioData';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'fullstack', 'frontend'
@@ -24,8 +24,8 @@ export default function Projects() {
 
   const filteredProjects =
     activeFilter === 'all'
-      ? sevenProjects
-      : sevenProjects.filter((p) => p.type === activeFilter);
+      ? sixProjects
+      : sixProjects.filter((p) => p.type === activeFilter);
 
   return (
     <section id="projects" className="relative w-full bg-[#08090B] text-white py-24 sm:py-32 overflow-hidden border-t border-[#292D32]">
@@ -41,8 +41,7 @@ export default function Projects() {
               <span className="px-2.5 py-0.5 rounded bg-[#D7FF00]/15 text-[#D7FF00] border border-[#D7FF00]/30 font-bold">
                 CHAPTER 02 // CASE FILES
               </span>
-              <span>—</span>
-              <span>SEVEN ENGINEERING SYSTEMS</span>
+              <span>— SIX ENGINEERING SYSTEMS</span>
             </div>
 
             <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
@@ -69,7 +68,7 @@ export default function Projects() {
                     : 'text-[#A5A7AE] hover:text-white'
                 }`}
               >
-                ALL (7)
+                ALL (6)
               </button>
 
               <button
@@ -80,7 +79,7 @@ export default function Projects() {
                     : 'text-[#A5A7AE] hover:text-white'
                 }`}
               >
-                FULL STACK (4)
+                FULL STACK (3)
               </button>
 
               <button
@@ -97,7 +96,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* 7 Projects Grid */}
+        {/* 6 Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project) => (
             <div

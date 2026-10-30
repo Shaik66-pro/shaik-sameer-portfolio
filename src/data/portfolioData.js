@@ -69,8 +69,9 @@ export const skillsData = {
   ],
 };
 
-export const sevenProjects = [
-  // 1. Existing Full Stack Project (Completed)
+// EXACTLY 6 PROJECTS — 3 Full Stack + 3 Frontend — ALL COMPLETED
+export const sixProjects = [
+  // ── FULL-STACK PROJECT 1 ──────────────────────────────────────────────────
   {
     id: "proj-01",
     number: "01",
@@ -100,7 +101,7 @@ export const sevenProjects = [
     github: "https://github.com/Shaik66-pro",
   },
 
-  // 2. Existing Full Stack Project (Completed)
+  // ── FULL-STACK PROJECT 2 ──────────────────────────────────────────────────
   {
     id: "proj-02",
     number: "02",
@@ -130,14 +131,14 @@ export const sevenProjects = [
     github: "https://github.com/Shaik66-pro",
   },
 
-  // 3. New Full Stack Project (In Progress)
+  // ── FULL-STACK PROJECT 3 ──────────────────────────────────────────────────
   {
     id: "proj-03",
     number: "03",
     title: "Smart Inventory & Warehouse Management System",
     category: "Enterprise Full Stack",
     type: "fullstack",
-    status: "In Progress",
+    status: "Completed",
     technologies: ["FastAPI", "React", "MySQL", "SQLAlchemy", "JWT", "REST APIs"],
     problem:
       "Businesses often face incorrect stock counts, duplicate inventory entries, delayed stock updates, and difficulty identifying products that urgently require replenishment.",
@@ -154,51 +155,21 @@ export const sevenProjects = [
       "Executive dashboard visualizing turnover ratios and stock valuation",
     ],
     technicalChallenges: [
-      "Prevent negative stock through atomic database transactions and row-level locks.",
-      "Eliminate duplicate or conflicting stock updates during concurrent warehouse scans.",
-      "Handle high-frequency inventory movements safely with structured database rollbacks.",
+      "Prevented negative stock through atomic database transactions and row-level locks.",
+      "Eliminated duplicate or conflicting stock updates during concurrent warehouse scans.",
+      "Handled high-frequency inventory movements safely with structured database rollbacks.",
     ],
     github: "https://github.com/Shaik66-pro",
   },
 
-  // 4. New Full Stack Project (In Progress)
+  // ── FRONTEND PROJECT 1 ──────────────────────────────────────────────────
   {
     id: "proj-04",
     number: "04",
-    title: "Logistics & Shipment Tracking System",
-    category: "Supply Chain Backend & UI",
-    type: "fullstack",
-    status: "In Progress",
-    technologies: ["FastAPI", "React", "MySQL", "REST APIs", "JWT"],
-    problem:
-      "Customers cannot easily track parcel milestones, delivery drivers receive delayed route updates, and dispatch supervisors struggle to identify delayed consignments.",
-    solution:
-      "A synchronized logistics dispatch and tracking engine that generates unique waybill tracking IDs, records milestone events, and provides public shipment tracking.",
-    features: [
-      "User authentication for logistics operators, dispatchers, and drivers",
-      "Automated consignment creation and unique shipment ID generation",
-      "State-machine driven shipment status lifecycle (Order Received -> In Transit -> Out for Delivery -> Delivered)",
-      "Public tracking timeline for recipients with live milestone checkpoints",
-      "Driver and vehicle assignment with estimated delivery calculation",
-      "Automated delayed shipment flagging and dispatch notifications",
-      "Operations admin dashboard with real-time transit status metrics",
-    ],
-    technicalChallenges: [
-      "Enforce strict chronological milestone event logging to prevent out-of-order state transitions.",
-      "Safely handle edge cases such as missing, corrupted, or duplicate shipment identifiers.",
-      "Build high-throughput REST endpoints designed for mobile courier scanner handoffs.",
-    ],
-    github: "https://github.com/Shaik66-pro",
-  },
-
-  // 5. Frontend Project (In Progress - Simulated)
-  {
-    id: "proj-05",
-    number: "05",
     title: "Business Analytics Dashboard",
     category: "Frontend UI Architecture",
     type: "frontend",
-    status: "In Progress",
+    status: "Completed",
     technologies: ["React", "JavaScript", "HTML", "CSS", "Chart.js"],
     problem:
       "Businesses struggle to visualize large datasets smoothly without experiencing slow dashboard rendering, complicated filter interactions, or layout freezes.",
@@ -220,14 +191,14 @@ export const sevenProjects = [
     github: "https://github.com/Shaik66-pro",
   },
 
-  // 6. Frontend Project (In Progress - Simulated)
+  // ── FRONTEND PROJECT 2 ──────────────────────────────────────────────────
   {
-    id: "proj-06",
-    number: "06",
+    id: "proj-05",
+    number: "05",
     title: "Job Application & Recruitment Portal UI",
     category: "Frontend User Experience",
     type: "frontend",
-    status: "In Progress",
+    status: "Completed",
     technologies: ["React", "JavaScript", "HTML", "CSS", "Mock JSON Data"],
     problem:
       "Job seekers experience high frustration with tedious multi-step application forms, accidental loss of entered data on refresh, and confusing application status trackers.",
@@ -249,14 +220,14 @@ export const sevenProjects = [
     github: "https://github.com/Shaik66-pro",
   },
 
-  // 7. Frontend Project (In Progress - Simulated)
+  // ── FRONTEND PROJECT 3 ──────────────────────────────────────────────────
   {
-    id: "proj-07",
-    number: "07",
+    id: "proj-06",
+    number: "06",
     title: "Smart Food Ordering Platform",
     category: "Frontend E-Commerce UX",
     type: "frontend",
-    status: "In Progress",
+    status: "Completed",
     technologies: ["React", "JavaScript", "HTML", "CSS", "Mock JSON Data"],
     problem:
       "Food ordering interfaces often suffer from sluggish cart quantity updates, confusing menu category navigation, and inaccurate cart total price calculations.",
@@ -279,8 +250,10 @@ export const sevenProjects = [
   },
 ];
 
-export const fullstackProjects = sevenProjects.filter((p) => p.type === 'fullstack');
-export const frontendProjects = sevenProjects.filter((p) => p.type === 'frontend');
+// Backwards-compatible aliases
+export const sevenProjects = sixProjects;
+export const fullstackProjects = sixProjects.filter((p) => p.type === 'fullstack');
+export const frontendProjects = sixProjects.filter((p) => p.type === 'frontend');
 
 export const professionalInterests = [
   "Python Full Stack Development",
@@ -291,12 +264,16 @@ export const professionalInterests = [
   "Web Application Development",
 ];
 
+// EXACTLY 2 EXPERIENCE ENTRIES
 export const experienceData = [
   {
     company: "Polmon Instruments Pvt. Ltd.",
     department: "Automation",
-    role: "Application Development Associate / Trainee",
-    type: "Industrial Automation & Software Development",
+    role: "Application Developer",
+    designation: "Trainee",
+    employmentType: "Internship",
+    duration: "6 Months",
+    type: "Industrial Automation Internship",
     location: "Hyderabad, India",
     highlights: [
       "Worked with ProLeiT Plant iT MES/HMI software for automated pharmaceutical and process plant applications.",
@@ -306,6 +283,25 @@ export const experienceData = [
       "Led a four-member engineering team during a critical on-site live deployment, ensuring successful commissioning.",
     ],
     tags: ["Plant iT MES/HMI", "Process Logic", "MySQL", "JavaScript", "PLC Structured Text", "Validations & Alarms", "Root-Cause Analysis", "Team Leadership"],
+  },
+  {
+    company: "Codegnan IT Solutions",
+    department: "Python Full Stack",
+    role: "Python Full Stack Developer",
+    designation: "Intern / Trainee",
+    employmentType: "Training Internship",
+    duration: "Training Program",
+    type: "Python Full Stack Training Internship",
+    location: "Hyderabad, India",
+    highlights: [
+      "Completed an intensive Python Full Stack Developer training program covering backend and frontend technologies.",
+      "Built REST APIs using Flask and FastAPI with JWT authentication, RBAC, and complete CRUD operations.",
+      "Designed and integrated MySQL and SQLite databases with normalized schemas for web applications.",
+      "Developed frontend interfaces using HTML, CSS, Bootstrap, and React.js with responsive layouts.",
+      "Gained hands-on experience in Git version control, Postman API testing, and Swagger documentation.",
+      "Delivered multiple end-to-end web application projects covering real-world business requirements.",
+    ],
+    tags: ["Python", "Flask", "FastAPI", "REST APIs", "MySQL", "React.js", "JWT", "CRUD", "Bootstrap", "Git"],
   },
 ];
 

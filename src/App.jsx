@@ -10,6 +10,7 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import StarBackground from './components/StarBackground';
 
 export default function App() {
   const [showEntrance, setShowEntrance] = useState(true);
@@ -23,6 +24,9 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#08090B] text-white overflow-x-hidden selection:bg-[#D7FF00] selection:text-[#08090B]">
+      {/* Night-sky star field — fixed, behind all content */}
+      <StarBackground />
+
       {/* Desktop Custom Cursor */}
       <CustomCursor />
 
