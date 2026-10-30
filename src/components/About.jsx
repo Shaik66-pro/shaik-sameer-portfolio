@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import {
   GraduationCap,
   Calendar,
@@ -9,141 +8,105 @@ import {
   Database,
   Server,
   Sparkles,
-  ArrowRight,
+  Award,
 } from 'lucide-react';
-import { personalInfo, professionalInterests } from '../data/portfolioData';
+import { personalInfo, educationData } from '../data/portfolioData';
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full bg-ivory-100 text-[#151518] py-20 lg:py-28 overflow-hidden">
-      {/* Chapter 01 Transition Curtain Bar (Screenshot 04) */}
+    <section id="about" className="relative w-full bg-[#F4F0E6] text-[#24211D] py-20 lg:py-28 overflow-hidden border-t border-[#D8C8AD]">
+      {/* Chapter 01 Transition Curtain Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-        <div className="border-b border-black/15 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="border-b border-[#D8C8AD] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <span className="font-mono text-xs tracking-widest text-zinc-500 uppercase block mb-1">
-              CHAPTER 01
+            <span className="font-mono text-xs tracking-widest text-[#625B51] uppercase block mb-1">
+              CHAPTER 01 // DOSSIER
             </span>
-            <h2 className="font-serifDisplay italic text-5xl sm:text-6xl md:text-7xl text-[#121214] tracking-tight">
-              The Subject
+            <h2 className="font-serifDisplay italic text-5xl sm:text-6xl md:text-7xl text-[#24211D] tracking-tight">
+              About Me & Academics
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs text-zinc-600">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyber-yellow border border-black/20" />
-            <span>DOSSIER // CANDIDATE BIOGRAPHY & EDUCATION</span>
+          <div className="flex items-center gap-3 font-mono text-xs text-[#625B51]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#24211D]" />
+            <span>VERIFIED CANDIDATE RECORD // MLRIT '25</span>
           </div>
         </div>
       </div>
 
-      {/* Main Profile Layout (Screenshot 05) */}
+      {/* Main Profile Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Yellow Duotone Portrait Box (Screenshot 05) */}
+          
+          {/* Left Column: Yellow Duotone Portrait Box with Uploaded Photo */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm">
-              {/* Vibrant Yellow Backdrop Block (Screenshot 05) */}
-              <div className="w-full bg-[#E4FF1A] p-3 sm:p-4 rounded-xl border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                <div className="relative aspect-[4/5] rounded-lg overflow-hidden border border-black/20 bg-zinc-900">
+              <div className="w-full bg-[#EAE3D5] p-3 sm:p-4 rounded-2xl border-2 border-[#24211D] shadow-[8px_8px_0px_0px_rgba(36,33,29,1)]">
+                <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden border border-[#24211D]/30 bg-[#24211D]">
                   <img
                     src={personalInfo.profileImage}
                     alt={personalInfo.name}
-                    className="w-full h-full object-cover object-top filter grayscale contrast-125"
+                    className="w-full h-full object-cover object-top filter contrast-110"
                   />
-                  {/* Yellow color blend mode to create the reference duotone look */}
-                  <div className="absolute inset-0 bg-[#E4FF1A] mix-blend-multiply opacity-50" />
+                  {/* Subtle warm duotone tint */}
+                  <div className="absolute inset-0 bg-[#D8C8AD] mix-blend-multiply opacity-25" />
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-black/15 flex items-center justify-between font-mono text-[11px] font-bold text-black uppercase">
-                  <span>FIG. 02 // SHAIK SAMEER</span>
+                <div className="mt-3 pt-2 border-t border-[#D8C8AD] flex items-center justify-between font-mono text-[11px] font-bold text-[#24211D] uppercase">
+                  <span>SHAIK SAMEER</span>
                   <span>B.TECH ECE '25</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Editorial Bio, Focus Areas & Education Table (Screenshot 05) */}
+          {/* Right Column: Narrative & Detailed Academic Credentials */}
           <div className="lg:col-span-7 flex flex-col">
-            {/* Highlighted Headline (Screenshot 05) */}
-            <h3 className="font-serifDisplay italic text-2xl sm:text-3xl lg:text-4xl text-[#111113] leading-snug mb-6">
+            <h3 className="font-serifDisplay italic text-2xl sm:text-3xl lg:text-4xl text-[#24211D] leading-snug mb-6">
               I'm Sameer — a B.Tech graduate in{' '}
-              <span className="highlighter-yellow not-italic font-bold font-sans">
+              <span className="not-italic font-bold font-sans underline decoration-[#D8C8AD] decoration-4 underline-offset-4">
                 Electronics and Communication Engineering
               </span>{' '}
               at MLR Institute of Technology, Hyderabad (Class of 2025).
             </h3>
 
-            {/* Narrative Paragraphs */}
-            <div className="space-y-4 font-sans text-sm sm:text-base text-zinc-700 leading-relaxed mb-8">
+            {/* Career Objective & Narrative */}
+            <div className="space-y-4 font-sans text-sm sm:text-base text-[#625B51] leading-relaxed mb-8">
               <p>
-                Python is my primary language; FastAPI, Django, Flask, React.js and MySQL are
-                where my scalable systems live. My training and practical experience have taught
-                me how to take an idea from architectural conception, through backend API design
-                and database normalization, directly into clean, responsive user interfaces.
+                {personalInfo.careerObjective}
               </p>
               <p>
-                What drives my engineering mindset is systems architecture, backend reliability,
-                and high-throughput REST APIs — the places where rigorous programming logic and
-                practical utility converge. Hands-on work in industrial automation at{' '}
-                <strong className="text-black font-semibold">
-                  Polmon Instruments Pvt. Ltd.
-                </strong>{' '}
-                instilled in me an uncompromising standard for software validation, troubleshooting,
-                and real-time data integrity.
+                My technical core centers on Python backend engineering with{' '}
+                <strong className="text-[#24211D]">FastAPI, Flask, and Django</strong>, paired with{' '}
+                <strong className="text-[#24211D]">MySQL and React.js</strong>. Through both academic rigor
+                and real-world automation training at{' '}
+                <strong className="text-[#24211D]">Polmon Instruments Pvt. Ltd.</strong>, I have cultivated
+                an engineering discipline focused on system reliability, normalized schemas, and clean RESTful design.
               </p>
             </div>
 
-            {/* Professional Interests / Focus Tags */}
-            <div className="mb-8">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-zinc-500 block mb-3">
-                CORE TECHNICAL FOCUS & INTERESTS:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {professionalInterests.map((interest) => (
-                  <span
-                    key={interest}
-                    className="px-3 py-1.5 rounded-md bg-white border border-black/15 font-mono text-xs text-zinc-800 shadow-sm flex items-center gap-1.5"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyber-yellow border border-black/30" />
-                    <span>{interest}</span>
-                  </span>
-                ))}
+            {/* Academic Track Record Table */}
+            <div className="bg-[#EAE3D5]/70 rounded-2xl border border-[#D8C8AD] p-6 shadow-sm">
+              <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#24211D] uppercase tracking-widest mb-4">
+                <GraduationCap className="w-4 h-4 text-[#24211D]" />
+                <span>VERIFIED ACADEMIC RECORD</span>
               </div>
-            </div>
 
-            {/* Structured Academic Metadata Grid (Screenshot 05) */}
-            <div className="bg-white rounded-xl border border-black/15 p-6 shadow-sm">
-              <h4 className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest mb-4">
-                ACADEMIC CREDENTIALS & INSTITUTION
-              </h4>
-
-              <div className="divide-y divide-black/10 font-mono text-xs sm:text-sm">
-                <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <span className="text-zinc-500 uppercase">DEGREE:</span>
-                  <span className="text-black font-bold">
-                    {personalInfo.degree}
-                  </span>
-                </div>
-
-                <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <span className="text-zinc-500 uppercase">INSTITUTION:</span>
-                  <span className="text-black font-bold">
-                    {personalInfo.college}
-                  </span>
-                </div>
-
-                <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <span className="text-zinc-500 uppercase">LOCATION:</span>
-                  <span className="text-black font-bold">
-                    {personalInfo.location}
-                  </span>
-                </div>
-
-                <div className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <span className="text-zinc-500 uppercase">TIMELINE:</span>
-                  <span className="text-black font-bold">
-                    {personalInfo.timeline} (Graduation: {personalInfo.graduationYear})
-                  </span>
-                </div>
+              <div className="divide-y divide-[#D8C8AD] font-mono text-xs sm:text-sm">
+                {educationData.map((edu, idx) => (
+                  <div key={idx} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <div>
+                      <span className="text-[#24211D] font-bold block">{edu.degree}</span>
+                      <span className="text-[#625B51] text-xs">{edu.institution} • {edu.location}</span>
+                    </div>
+                    <div className="text-left sm:text-right">
+                      <span className="px-2.5 py-1 rounded-md bg-[#F4F0E6] border border-[#D8C8AD] text-[#24211D] font-bold inline-block">
+                        {edu.score}
+                      </span>
+                      <span className="text-[#625B51] text-[11px] block mt-0.5">{edu.year}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

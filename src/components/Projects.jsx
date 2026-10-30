@@ -11,276 +11,172 @@ import {
   AlertCircle,
   X,
   Sparkles,
-  ChevronRight,
   Clock,
   ArrowUpRight,
-  ShieldAlert,
+  ShieldCheck,
+  CheckCircle,
 } from 'lucide-react';
-import { frontendProjects, fullstackProjects, personalInfo } from '../data/portfolioData';
+import { sevenProjects, personalInfo } from '../data/portfolioData';
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState('fullstack'); // 'fullstack' or 'frontend'
+  const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'fullstack', 'frontend'
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const filteredProjects =
+    activeFilter === 'all'
+      ? sevenProjects
+      : sevenProjects.filter((p) => p.type === activeFilter);
+
   return (
-    <section id="projects" className="relative w-full bg-obsidian-950 text-white py-24 sm:py-32 overflow-hidden border-t border-white/10">
-      {/* Background Subtle Cyber Grid */}
-      <div className="absolute inset-0 bg-grid-cyber opacity-40 pointer-events-none" />
+    <section id="projects" className="relative w-full bg-[#08090B] text-white py-24 sm:py-32 overflow-hidden border-t border-[#292D32]">
+      {/* Background Cyber Grid */}
+      <div className="absolute inset-0 bg-grid-cyber opacity-30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header (Screenshot 06 Layout & Typography) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 border-b border-white/10 pb-10">
+        
+        {/* Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14 border-b border-[#292D32] pb-10">
           <div className="lg:col-span-8 flex flex-col items-start">
-            {/* Tag Badge */}
-            <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-zinc-400 uppercase mb-3">
-              <span className="px-2 py-0.5 rounded bg-cyber-yellow/10 text-cyber-yellow border border-cyber-yellow/30 font-bold">
-                CASE FILES / CASE FILES
+            <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-[#A5A7AE] uppercase mb-3">
+              <span className="px-2.5 py-0.5 rounded bg-[#D7FF00]/15 text-[#D7FF00] border border-[#D7FF00]/30 font-bold">
+                CHAPTER 02 // CASE FILES
               </span>
               <span>—</span>
-              <span>CHAPTER 02</span>
+              <span>SEVEN ENGINEERING SYSTEMS</span>
             </div>
 
-            {/* 3D Extruded Title & Yellow Script (Screenshot 06) */}
-            <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-none uppercase text-3d-white">
-              THREE SYSTEMS.
+            <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
+              PROJECT DOSSIER
             </h2>
-            <span className="font-serifDisplay italic font-normal text-4xl sm:text-6xl text-cyber-yellow -mt-1 sm:-mt-3 tracking-normal">
-              Built in {personalInfo.establishedYear}.
+            <span className="font-serifDisplay italic font-normal text-3xl sm:text-5xl text-[#D7FF00] -mt-1 tracking-normal">
+              Solving Real-World Problems.
             </span>
 
-            <p className="font-sans text-sm sm:text-base text-zinc-400 max-w-2xl mt-4 leading-relaxed">
-              Architectural solutions engineered for real-world enterprise utility.
-              Explore both comprehensive full-stack backends and intuitive frontend systems.
+            <p className="font-sans text-sm sm:text-base text-[#A5A7AE] max-w-2xl mt-4 leading-relaxed">
+              Real-world systems engineered across backend architectures and frontend user interfaces.
+              Completed production systems are distinguished from actively advancing architectures.
             </p>
           </div>
 
-          {/* Tab Switcher Pills */}
+          {/* Filter Pills */}
           <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="inline-flex p-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-md">
+            <div className="inline-flex p-1.5 rounded-full bg-[#111317] border border-[#292D32]">
               <button
-                onClick={() => setActiveTab('fullstack')}
-                className={`px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 flex items-center gap-1.5 ${
-                  activeTab === 'fullstack'
-                    ? 'bg-cyber-yellow text-obsidian-950 shadow-glow-yellow'
-                    : 'text-zinc-400 hover:text-white'
+                onClick={() => setActiveFilter('all')}
+                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                  activeFilter === 'all'
+                    ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
+                    : 'text-[#A5A7AE] hover:text-white'
                 }`}
               >
-                <Server className="w-3.5 h-3.5" />
-                <span>FULL STACK SYSTEMS</span>
+                ALL (7)
               </button>
 
               <button
-                onClick={() => setActiveTab('frontend')}
-                className={`px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 flex items-center gap-1.5 ${
-                  activeTab === 'frontend'
-                    ? 'bg-cyber-yellow text-obsidian-950 shadow-glow-yellow'
-                    : 'text-zinc-400 hover:text-white'
+                onClick={() => setActiveFilter('fullstack')}
+                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                  activeFilter === 'fullstack'
+                    ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
+                    : 'text-[#A5A7AE] hover:text-white'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5" />
-                <span>FRONTEND SHOWCASE</span>
+                FULL STACK (4)
+              </button>
+
+              <button
+                onClick={() => setActiveFilter('frontend')}
+                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                  activeFilter === 'frontend'
+                    ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
+                    : 'text-[#A5A7AE] hover:text-white'
+                }`}
+              >
+                FRONTEND (3)
               </button>
             </div>
           </div>
         </div>
 
-        {/* Tab 1: Full Stack Projects (Prompt 8 & Screenshot 06) */}
-        {activeTab === 'fullstack' && (
-          <div className="space-y-12">
-            <div className="flex items-center justify-between">
+        {/* 7 Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              className="group relative bg-[#111317] border border-[#292D32] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#D7FF00]/70 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+            >
               <div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-white uppercase">
-                  Full Stack Projects – Solving Real-World Problems
-                </h3>
-                <p className="font-mono text-xs text-zinc-400 mt-1">
-                  Engineered with Python (FastAPI, Django, Flask), MySQL & React.js
-                </p>
-              </div>
+                {/* Header: Number & Real Status Badge */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-display font-black text-4xl sm:text-5xl text-outline-yellow group-hover:text-[#D7FF00] transition-colors">
+                    {project.number}
+                  </span>
 
-              <div className="hidden sm:flex items-center gap-2 font-mono text-xs text-amber-400 bg-amber-950/40 border border-amber-500/30 px-3 py-1.5 rounded-full">
-                <Clock className="w-3.5 h-3.5 animate-pulse" />
-                <span>ALL SYSTEMS IN PROGRESS</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {fullstackProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className="group relative bg-obsidian-900 border border-white/15 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-cyber-yellow/60 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
-                >
-                  {/* Top Index & Category */}
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-display font-black text-4xl sm:text-5xl text-outline-yellow group-hover:text-cyber-yellow transition-colors">
-                        {project.number}
-                      </span>
-                      <span className="px-2.5 py-1 rounded bg-amber-400/10 text-amber-300 border border-amber-400/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {project.status}
-                      </span>
-                    </div>
-
-                    <div className="font-mono text-[11px] tracking-wider text-zinc-400 uppercase mb-2">
-                      {project.category}
-                    </div>
-
-                    <h4 className="font-display font-bold text-xl sm:text-2xl text-white group-hover:text-cyber-yellow transition-colors tracking-tight mb-3">
-                      {project.title}
-                    </h4>
-
-                    {/* Architecture Pills */}
-                    <div className="grid grid-cols-3 gap-2 font-mono text-[10px] bg-white/5 p-2 rounded-lg border border-white/10 mb-4 text-center">
-                      <div>
-                        <span className="text-zinc-500 block">BACKEND</span>
-                        <span className="text-zinc-200 font-bold">{project.backend}</span>
-                      </div>
-                      <div>
-                        <span className="text-zinc-500 block">FRONTEND</span>
-                        <span className="text-zinc-200 font-bold">{project.frontend}</span>
-                      </div>
-                      <div>
-                        <span className="text-zinc-500 block">DATABASE</span>
-                        <span className="text-zinc-200 font-bold">{project.database}</span>
-                      </div>
-                    </div>
-
-                    {/* Problem Statement */}
-                    <p className="font-sans text-xs sm:text-sm text-zinc-400 line-clamp-3 mb-5 leading-relaxed">
-                      {project.problem}
-                    </p>
-
-                    {/* Technology Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded bg-white/5 border border-white/10 font-mono text-[10px] text-zinc-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="px-4 py-2 rounded-full bg-cyber-yellow text-obsidian-950 font-mono text-xs font-bold hover:bg-white transition-colors flex items-center gap-1.5 shadow-glow-yellow"
-                    >
-                      <span>VIEW SPECS</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <a
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-xs text-zinc-400 hover:text-white flex items-center gap-1 hover:underline underline-offset-4"
-                      title="Shaik Sameer GitHub Repositories"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                      <span>GITHUB REPO</span>
-                    </a>
-                  </div>
+                  {project.status === 'Completed' ? (
+                    <span className="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
+                      <CheckCircle className="w-3 h-3" />
+                      COMPLETED
+                    </span>
+                  ) : (
+                    <span className="px-2.5 py-1 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
+                      <Clock className="w-3 h-3 animate-pulse" />
+                      IN PROGRESS
+                    </span>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Tab 2: Frontend Projects (Prompt 7) */}
-        {activeTab === 'frontend' && (
-          <div className="space-y-12">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-white uppercase">
-                  Frontend Projects – Building Better User Experiences
-                </h3>
-                <p className="font-mono text-xs text-zinc-400 mt-1">
-                  Crafted with React.js, modern CSS, dynamic charts and responsive design
-                </p>
-              </div>
-
-              <div className="hidden sm:flex items-center gap-2 font-mono text-xs text-amber-400 bg-amber-950/40 border border-amber-500/30 px-3 py-1.5 rounded-full">
-                <Clock className="w-3.5 h-3.5 animate-pulse" />
-                <span>IN ACTIVE DEVELOPMENT</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {frontendProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className="group relative bg-obsidian-900 border border-white/15 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-cyber-yellow/60 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-display font-black text-4xl sm:text-5xl text-outline-yellow group-hover:text-cyber-yellow transition-colors">
-                        {project.number}
-                      </span>
-                      <span className="px-2.5 py-1 rounded bg-amber-400/10 text-amber-300 border border-amber-400/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {project.status}
-                      </span>
-                    </div>
-
-                    <div className="font-mono text-[11px] tracking-wider text-zinc-400 uppercase mb-2">
-                      {project.category}
-                    </div>
-
-                    <h4 className="font-display font-bold text-xl sm:text-2xl text-white group-hover:text-cyber-yellow transition-colors tracking-tight mb-3">
-                      {project.title}
-                    </h4>
-
-                    {/* Problem Statement */}
-                    <p className="font-sans text-xs sm:text-sm text-zinc-400 line-clamp-3 mb-5 leading-relaxed">
-                      {project.problem}
-                    </p>
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded bg-white/5 border border-white/10 font-mono text-[10px] text-zinc-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="px-4 py-2 rounded-full bg-cyber-yellow text-obsidian-950 font-mono text-xs font-bold hover:bg-white transition-colors flex items-center gap-1.5 shadow-glow-yellow"
-                    >
-                      <span>VIEW SPECS</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <a
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-xs text-zinc-400 hover:text-white flex items-center gap-1 hover:underline underline-offset-4"
-                      title="Shaik Sameer GitHub Repositories"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                      <span>GITHUB REPO</span>
-                    </a>
-                  </div>
+                <div className="font-mono text-[11px] tracking-wider text-[#D7FF00] uppercase mb-1">
+                  {project.category}
                 </div>
-              ))}
+
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-white group-hover:text-[#D7FF00] transition-colors tracking-tight mb-3">
+                  {project.title}
+                </h3>
+
+                {/* Problem Statement */}
+                <p className="font-sans text-xs sm:text-sm text-[#A5A7AE] line-clamp-3 mb-5 leading-relaxed">
+                  {project.problem}
+                </p>
+
+                {/* Technologies Badges */}
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-0.5 rounded bg-[#08090B] border border-[#292D32] font-mono text-[10px] text-zinc-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Footer: View Specs + GitHub link */}
+              <div className="pt-4 border-t border-[#292D32] flex items-center justify-between gap-3">
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="px-4 py-2 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-xs font-bold hover:bg-white transition-colors flex items-center gap-1.5 shadow-glow-yellow"
+                >
+                  <span>VIEW SPECS</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-[#A5A7AE] hover:text-white flex items-center gap-1 hover:underline underline-offset-4"
+                  title="Shaik Sameer GitHub Repositories"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GITHUB</span>
+                </a>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
 
-      {/* Interactive Project Details Modal / Dossier Drawer */}
+      {/* Interactive Project Specification Modal */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
@@ -288,15 +184,15 @@ export default function Projects() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-obsidian-900 border border-white/20 rounded-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl text-white"
+              className="relative w-full max-w-2xl bg-[#111317] border border-[#292D32] rounded-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl text-white"
             >
-              {/* Modal Header */}
-              <div className="flex items-start justify-between border-b border-white/10 pb-4 mb-6">
+              {/* Header */}
+              <div className="flex items-start justify-between border-b border-[#292D32] pb-4 mb-6">
                 <div>
-                  <div className="flex items-center gap-2 font-mono text-xs text-cyber-yellow mb-1">
+                  <div className="flex items-center gap-2 font-mono text-xs text-[#D7FF00] mb-1">
                     <span>CASE FILE #{selectedProject.number}</span>
                     <span>•</span>
-                    <span className="text-zinc-400">{selectedProject.category}</span>
+                    <span className="text-[#A5A7AE]">{selectedProject.category}</span>
                   </div>
                   <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
                     {selectedProject.title}
@@ -305,97 +201,104 @@ export default function Projects() {
 
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-white/5 border border-[#292D32] hover:bg-white/10 text-[#A5A7AE] hover:text-white transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Status Notice */}
-              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-6 flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                <div className="font-mono text-xs text-zinc-300">
-                  <strong className="text-amber-300 uppercase block mb-0.5">
-                    Project Status: {selectedProject.status}
-                  </strong>
-                  This application architecture is actively being coded, tested, and validated.
-                  Per portfolio integrity standards, live production links and code commits will be
-                  synchronized upon milestone validation.
-                </div>
-              </div>
-
-              {/* Problem Breakdown */}
-              <div className="mb-6">
-                <h4 className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">
-                  PROBLEM STATEMENT
-                </h4>
-                <p className="font-sans text-sm text-zinc-300 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10">
-                  {selectedProject.problem}
-                </p>
-              </div>
-
-              {/* Architectural Highlights / Stack */}
-              {selectedProject.backend && (
-                <div className="mb-6">
-                  <h4 className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">
-                    SYSTEM ARCHITECTURE
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-                    <div className="bg-white/5 p-3 rounded-lg border border-white/10">
-                      <span className="text-zinc-400 block text-[10px]">BACKEND FRAMEWORK</span>
-                      <strong className="text-white">{selectedProject.backend}</strong>
-                    </div>
-                    <div className="bg-white/5 p-3 rounded-lg border border-white/10">
-                      <span className="text-zinc-400 block text-[10px]">FRONTEND CLIENT</span>
-                      <strong className="text-white">{selectedProject.frontend}</strong>
-                    </div>
-                    <div className="bg-white/5 p-3 rounded-lg border border-white/10">
-                      <span className="text-zinc-400 block text-[10px]">DATABASE ENGINE</span>
-                      <strong className="text-white">{selectedProject.database}</strong>
-                    </div>
+              {/* Status Badge */}
+              <div className="flex items-center gap-2 mb-6">
+                {selectedProject.status === 'Completed' ? (
+                  <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 flex items-center gap-2 font-mono text-xs text-emerald-400 w-full">
+                    <CheckCircle className="w-4 h-4 shrink-0" />
+                    <span>STATUS: COMPLETED & VERIFIED APPLICATION</span>
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 flex items-center gap-2 font-mono text-xs text-amber-300 w-full">
+                    <Clock className="w-4 h-4 shrink-0 animate-pulse" />
+                    <span>STATUS: ACTIVE ARCHITECTURAL DEVELOPMENT (IN PROGRESS)</span>
+                  </div>
+                )}
+              </div>
 
-              {/* Features List */}
+              {/* Problem & Solution */}
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h4 className="font-mono text-xs font-bold text-[#A5A7AE] uppercase tracking-widest mb-1.5">
+                    REAL-WORLD PROBLEM STATEMENT
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-zinc-300 bg-[#08090B] p-3.5 rounded-xl border border-[#292D32] leading-relaxed">
+                    {selectedProject.problem}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-mono text-xs font-bold text-[#D7FF00] uppercase tracking-widest mb-1.5">
+                    ENGINEERING SOLUTION
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-zinc-200 bg-[#08090B] p-3.5 rounded-xl border border-[#292D32] leading-relaxed">
+                    {selectedProject.solution}
+                  </p>
+                </div>
+              </div>
+
+              {/* Features */}
               <div className="mb-6">
-                <h4 className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3">
+                <h4 className="font-mono text-xs font-bold text-[#A5A7AE] uppercase tracking-widest mb-2.5">
                   CORE FEATURES & SPECIFICATIONS
                 </h4>
-                <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-zinc-300">
-                  {selectedProject.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/5">
-                      <CheckCircle2 className="w-4 h-4 text-cyber-yellow shrink-0 mt-0.5" />
-                      <span>{feature}</span>
+                <ul className="space-y-2 font-sans text-xs sm:text-sm text-zinc-300">
+                  {selectedProject.features.map((feat, i) => (
+                    <li key={i} className="flex items-start gap-2 bg-[#08090B]/60 p-2.5 rounded-lg border border-[#292D32]/60">
+                      <CheckCircle2 className="w-4 h-4 text-[#D7FF00] shrink-0 mt-0.5" />
+                      <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Technologies Pill Grid */}
+              {/* Technical Challenges Solved */}
+              {selectedProject.technicalChallenges && (
+                <div className="mb-6">
+                  <h4 className="font-mono text-xs font-bold text-[#A5A7AE] uppercase tracking-widest mb-2.5">
+                    TECHNICAL CHALLENGES SOLVED
+                  </h4>
+                  <ul className="space-y-2 font-sans text-xs sm:text-sm text-zinc-300">
+                    {selectedProject.technicalChallenges.map((ch, i) => (
+                      <li key={i} className="flex items-start gap-2 bg-[#08090B]/60 p-2.5 rounded-lg border border-[#292D32]/60">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D7FF00] shrink-0 mt-2" />
+                        <span>{ch}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Technologies */}
               <div className="mb-6">
-                <h4 className="font-mono text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">
+                <h4 className="font-mono text-xs font-bold text-[#A5A7AE] uppercase tracking-widest mb-2">
                   TECHNOLOGIES UTILIZED
                 </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedProject.technologies.map((t) => (
                     <span
-                      key={tech}
-                      className="px-3 py-1 rounded-md bg-white/10 border border-white/15 font-mono text-xs text-cyber-yellow"
+                      key={t}
+                      className="px-3 py-1 rounded-md bg-[#D7FF00]/10 border border-[#D7FF00]/30 font-mono text-xs text-[#D7FF00]"
                     >
-                      {tech}
+                      {t}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Modal Footer */}
-              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              {/* Footer */}
+              <div className="pt-4 border-t border-[#292D32] flex items-center justify-between">
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs font-semibold flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-full bg-[#08090B] hover:bg-white/10 border border-[#292D32] text-white font-mono text-xs flex items-center gap-2"
                 >
                   <Github className="w-4 h-4" />
                   <span>CHECK GITHUB PROFILE</span>
@@ -403,7 +306,7 @@ export default function Projects() {
 
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2.5 rounded-full bg-cyber-yellow text-obsidian-950 font-mono text-xs font-bold hover:bg-white transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-xs font-bold hover:bg-white transition-colors"
                 >
                   CLOSE DOSSIER
                 </button>
