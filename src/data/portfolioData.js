@@ -279,6 +279,18 @@ export const sevenProjects = [
   },
 ];
 
+export const fullstackProjects = sevenProjects.filter((p) => p.type === 'fullstack');
+export const frontendProjects = sevenProjects.filter((p) => p.type === 'frontend');
+
+export const professionalInterests = [
+  "Python Full Stack Development",
+  "Backend Development",
+  "REST API Development",
+  "Database Management",
+  "Frontend Development",
+  "Web Application Development",
+];
+
 export const experienceData = [
   {
     company: "Polmon Instruments Pvt. Ltd.",
