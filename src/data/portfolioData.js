@@ -41,8 +41,7 @@ export const skillsData = {
     { name: "Flask", category: "Microservices & Web APIs" },
     { name: "Django", category: "Enterprise Full-Featured Framework" },
     { name: "REST APIs", category: "API Architecture & Design" },
-  ],
-  frontend: [
+  ],  frontend: [
     { name: "HTML5", category: "Semantic Markup" },
     { name: "CSS3", category: "Modern Styling & Grid" },
     { name: "Bootstrap", category: "Rapid Component Styling" },
