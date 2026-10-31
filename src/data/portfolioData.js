@@ -2,12 +2,12 @@ export const personalInfo = {
   name: "Shaik Sameer",
   firstName: "SAMEER",
   lastName: "SHAIK",
-  role: "Python Full Stack Developer",
+  role: "Python Developer",
   headline: "Building Scalable Backend Systems & Intuitive Web Applications",
   careerObjective:
     "I want to build scalable web applications, reliable backend systems and user-friendly digital products that solve real-world problems.",
   description:
-    "Python Full Stack Developer with hands-on expertise in FastAPI, Flask, Django, MySQL and React.js. Experienced in enterprise automation workflows, REST API architecture, and database optimization.",
+    "Python Developer with hands-on expertise in FastAPI, Flask, Django, MySQL and React.js. Experienced in enterprise automation workflows, REST API architecture, and database optimization.",
   email: "sameernawab66@gmail.com",
   phone: "+91 8367078316",
   location: "Hyderabad, Telangana, India",

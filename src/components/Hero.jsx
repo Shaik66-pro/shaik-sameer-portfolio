@@ -113,11 +113,14 @@ export default function Hero({ onOpenContact }) {
 
       {/* ── HERO GRID ───────────────────────────────────────────────────────── */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-auto">
-        {/* On large screens: 6+6 split so SAMEER never overlaps the image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+        {/*
+          3-col grid:  [left-content spans cols 1+2] [image gets col 3]
+          This gives ~62% to text and ~38% to the image, with a guaranteed gap.
+        */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
 
-          {/* ── LEFT COLUMN ─────────────────────────────────────────────── */}
-          <div className="flex flex-col items-start text-left">
+          {/* ── LEFT COLUMN — takes 2 of 3 cols ─────────────────────────── */}
+          <div className="lg:col-span-2 flex flex-col items-start text-left">
 
             {/* Primary language badge */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -134,16 +137,15 @@ export default function Hero({ onOpenContact }) {
 
             {/* ── SAMEER heading ──
                 Key fixes:
-                  • "overflow-visible" so the letters never get clipped
-                  • fluid font: starts smaller, caps at ~9xl so it cannot overflow into image column
-                  • "break-keep" keeps it on one line
-                  • left column is now exactly 50% wide on lg screens
+                  • fluid font clamped at 7rem max so it stays within its col
+                  • overflow-visible + whitespace-nowrap keeps the word whole
+                  • 3-col layout gives this column 2/3 of available width
             */}
             <div className="w-full overflow-visible mb-3">
               <h1
                 className="font-display font-black leading-none uppercase text-white text-3d-white tracking-tight"
                 style={{
-                  fontSize: 'clamp(3.8rem, 9vw, 8rem)',
+                  fontSize: 'clamp(3.5rem, 8vw, 7rem)',
                   wordBreak: 'keep-all',
                   whiteSpace: 'nowrap',
                 }}
@@ -217,10 +219,10 @@ export default function Hero({ onOpenContact }) {
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN — portrait card ───────────────────────────── */}
-          <div className="flex justify-center lg:justify-end w-full">
-            {/* max-w capped so it doesn't bleed into left column */}
-            <div className="relative w-full" style={{ maxWidth: '380px' }}>
+          {/* ── RIGHT COLUMN — portrait card in col 3 ──────────────────── */}
+          <div className="lg:col-span-1 flex justify-center lg:justify-end w-full">
+            {/* Portrait capped so it never bleeds left */}
+            <div className="relative w-full" style={{ maxWidth: '340px' }}>
               <div className="relative rounded-2xl overflow-hidden border-2 border-[#292D32] hover:border-[#D7FF00]/80 bg-[#111317] shadow-2xl transition-all duration-500 group"
                    style={{ aspectRatio: '4/5' }}>
                 <img
@@ -245,7 +247,7 @@ export default function Hero({ onOpenContact }) {
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span>READY FOR NEW ROLES</span>
                 </span>
-                <span className="text-[#D7FF00]">PYTHON FULL STACK</span>
+                <span className="text-[#D7FF00]">PYTHON DEVELOPER</span>
               </div>
             </div>
           </div>

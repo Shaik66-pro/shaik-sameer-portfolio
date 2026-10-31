@@ -47,7 +47,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
                 SHAIK SAMEER
               </span>
               <span className="text-[10px] text-[#A5A7AE] font-mono tracking-widest uppercase">
-                EST. {personalInfo.establishedYear} // PYTHON DEV
+                EST. {personalInfo.establishedYear} // PYTHON DEVELOPER
               </span>
             </div>
           </a>

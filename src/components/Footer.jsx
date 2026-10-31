@@ -21,7 +21,7 @@ export default function Footer() {
               {personalInfo.name}
             </span>
             <span className="text-[10px] text-[#A5A7AE] uppercase tracking-widest">
-              PYTHON FULL STACK DEVELOPER // MLRIT HYDERABAD
+              PYTHON DEVELOPER // MLRIT HYDERABAD
             </span>
           </div>
         </div>
