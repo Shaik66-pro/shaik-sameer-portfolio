@@ -11,10 +11,8 @@ import {
   AlertCircle,
   X,
   Sparkles,
-  Clock,
   ArrowUpRight,
   ShieldCheck,
-  CheckCircle,
 } from 'lucide-react';
 import { sixProjects, personalInfo } from '../data/portfolioData';
 
@@ -104,23 +102,11 @@ export default function Projects() {
               className="group relative bg-[#111317] border border-[#292D32] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#D7FF00]/70 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
             >
               <div>
-                {/* Header: Number & Real Status Badge */}
+                {/* Header: Number only — no status badge */}
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-display font-black text-4xl sm:text-5xl text-outline-yellow group-hover:text-[#D7FF00] transition-colors">
                     {project.number}
                   </span>
-
-                  {project.status === 'Completed' ? (
-                    <span className="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3" />
-                      COMPLETED
-                    </span>
-                  ) : (
-                    <span className="px-2.5 py-1 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 font-mono text-[10px] font-bold tracking-wider uppercase flex items-center gap-1">
-                      <Clock className="w-3 h-3 animate-pulse" />
-                      IN PROGRESS
-                    </span>
-                  )}
                 </div>
 
                 <div className="font-mono text-[11px] tracking-wider text-[#D7FF00] uppercase mb-1">
@@ -204,21 +190,6 @@ export default function Projects() {
                 >
                   <X className="w-5 h-5" />
                 </button>
-              </div>
-
-              {/* Status Badge */}
-              <div className="flex items-center gap-2 mb-6">
-                {selectedProject.status === 'Completed' ? (
-                  <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 flex items-center gap-2 font-mono text-xs text-emerald-400 w-full">
-                    <CheckCircle className="w-4 h-4 shrink-0" />
-                    <span>STATUS: COMPLETED & VERIFIED APPLICATION</span>
-                  </div>
-                ) : (
-                  <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 flex items-center gap-2 font-mono text-xs text-amber-300 w-full">
-                    <Clock className="w-4 h-4 shrink-0 animate-pulse" />
-                    <span>STATUS: ACTIVE ARCHITECTURAL DEVELOPMENT (IN PROGRESS)</span>
-                  </div>
-                )}
               </div>
 
               {/* Problem & Solution */}

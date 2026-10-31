@@ -7,29 +7,15 @@ import {
   Github,
   Linkedin,
   Terminal,
-  Sparkles,
   MapPin,
-  Trophy,
-  Code2,
   GraduationCap,
   Lightbulb,
-  Crosshair,
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Hero({ onOpenContact }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
-
-  // Focused Flashlight / Torchlight cursor tracking
-  const [flashlight, setFlashlight] = useState({
-    x: 50,
-    y: 40,
-    clientX: 0,
-    clientY: 0,
-    active: true,
-  });
-  const [flashlightEnabled, setFlashlightEnabled] = useState(true);
 
   // Three.js 3D Background setup
   useEffect(() => {
@@ -87,7 +73,7 @@ export default function Hero({ onOpenContact }) {
     const particleSystem = new THREE.Points(geometry, pMaterial);
     scene.add(particleSystem);
 
-    // Floating 3D Wireframe Geometries
+    // Floating 3D Wireframe Geometry
     const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
     const icoMat = new THREE.MeshBasicMaterial({
       color: 0xd7ff00,
@@ -130,26 +116,10 @@ export default function Hero({ onOpenContact }) {
     };
   }, []);
 
-  // Track cursor movement for the Focused Flashlight beam
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setFlashlight({
-      x,
-      y,
-      clientX: e.clientX,
-      clientY: e.clientY,
-      active: true,
-    });
-  };
-
   return (
     <section
       id="subject"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="relative w-full min-h-screen bg-[#08090B] text-white overflow-hidden flex flex-col justify-between pt-24 pb-12 select-none"
     >
       {/* 3D WebGL Canvas Layer */}
@@ -160,16 +130,6 @@ export default function Hero({ onOpenContact }) {
 
       {/* Cyber Grid Pattern */}
       <div className="absolute inset-0 bg-grid-cyber pointer-events-none z-[1] opacity-40" />
-
-      {/* FOCUSED LIGHT EFFECT (User Requirement: "the whole concept should runs on a focused light from the cursor") */}
-      {flashlightEnabled && (
-        <div
-          className="absolute inset-0 pointer-events-none z-[2] transition-all duration-75"
-          style={{
-            background: `radial-gradient(circle 320px at ${flashlight.x}% ${flashlight.y}%, rgba(215, 255, 0, 0.16) 0%, rgba(8, 9, 11, 0.25) 55%, rgba(8, 9, 11, 0.88) 100%)`,
-          }}
-        />
-      )}
 
       {/* Giant Wireframe Outline Typography in Background: "SHAIK" */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none z-[2] overflow-hidden opacity-15">
@@ -188,62 +148,47 @@ export default function Hero({ onOpenContact }) {
             <span>—</span>
             <span className="text-[#D7FF00] font-bold">FIG. 01 // THE SUBJECT</span>
           </div>
-
-          {/* Flashlight Mode Switcher */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setFlashlightEnabled(!flashlightEnabled)}
-              className="px-3 py-1 rounded-full bg-[#111317] border border-[#292D32] hover:border-[#D7FF00] text-xs font-mono text-zinc-300 flex items-center gap-1.5 transition-colors"
-            >
-              <Lightbulb className={`w-3.5 h-3.5 ${flashlightEnabled ? 'text-[#D7FF00]' : 'text-zinc-500'}`} />
-              <span>{flashlightEnabled ? 'FOCUSED LIGHT: ON' : 'FULL BRIGHTNESS'}</span>
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* BALANCED TWO-COLUMN HERO GRID (Fixes the "SAMEER" heading and image overlap) */}
+      {/* ── BALANCED TWO-COLUMN HERO GRID ─────────────────────────────────── */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          
-          {/* LEFT COLUMN: Headings, Objective, Badges & Actions (Dedicated Col Span 7) */}
+
+          {/* LEFT COLUMN — col-span-7 */}
           <div className="lg:col-span-7 flex flex-col items-start text-left pr-0 lg:pr-4">
-            
-            {/* Primary Language Callout & Focused Light Prompt */}
+
+            {/* Primary Language Callout */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <div className="px-3 py-1 bg-[#D7FF00] text-[#08090B] font-display font-black text-xs sm:text-sm tracking-wider uppercase rounded shadow-glow-yellow flex items-center gap-1.5">
                 <Terminal className="w-4 h-4 text-[#08090B]" />
                 <span>{personalInfo.primaryLanguage} — PRIMARY LANGUAGE</span>
               </div>
-
-              <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#A5A7AE] bg-[#111317] border border-[#292D32] px-3 py-1 rounded-full">
-                <Crosshair className="w-3 h-3 text-[#D7FF00]" />
-                <span>FOCUSED CURSOR SPOTLIGHT ACTIVE</span>
-              </div>
             </div>
 
-            {/* Candidate Formal Name */}
+            {/* Candidate Formal Name line */}
             <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-[#A5A7AE] uppercase mb-1">
               SHAIK SAMEER // B.TECH ECE 2025
             </div>
 
-            {/* Large 3D Display Title: "SAMEER" (Clean layout with zero overlap) */}
+            {/* Large 3D Display Title: "SAMEER" */}
             <div className="w-full overflow-visible mb-3">
               <h1 className="font-display font-black text-6xl sm:text-8xl md:text-9xl tracking-tight leading-none uppercase text-white text-3d-white">
                 {personalInfo.firstName}
               </h1>
             </div>
 
-            {/* Professional Role & Objective (Section 2 Prompt) */}
+            {/* Professional Role */}
             <h2 className="font-display font-bold text-xl sm:text-2xl text-[#D7FF00] tracking-wide uppercase mb-3">
               {personalInfo.role}
             </h2>
 
+            {/* Career Objective */}
             <p className="font-sans text-sm sm:text-base text-[#F5F5F5] font-medium max-w-xl leading-relaxed mb-6 bg-[#111317]/60 p-4 rounded-xl border border-[#292D32] backdrop-blur-sm">
               "{personalInfo.careerObjective}"
             </p>
 
-            {/* Verified Education & Metric Quick Badges */}
+            {/* Education Badges */}
             <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs text-[#A5A7AE] mb-8">
               <span className="px-3 py-1 rounded-md bg-[#111317] border border-[#292D32] flex items-center gap-1.5 text-white">
                 <GraduationCap className="w-3.5 h-3.5 text-[#D7FF00]" />
@@ -257,7 +202,7 @@ export default function Hero({ onOpenContact }) {
               </span>
             </div>
 
-            {/* Action Buttons & Links */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
               <a
                 href="#projects"
@@ -298,24 +243,24 @@ export default function Hero({ onOpenContact }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Dedicated Portrait Card (Col Span 5 - Guaranteed Zero Overlap) */}
+          {/* RIGHT COLUMN — col-span-5, clean portrait with NO overlay cards */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
             <div className="relative w-full max-w-sm sm:max-w-md">
-              
-              {/* Clean Cyber Neon Border Container (No arbitrary overflowing coordinates) */}
+
+              {/* Portrait Card — clean, no bottom content cards */}
               <div className="relative rounded-2xl overflow-hidden border-2 border-[#292D32] hover:border-[#D7FF00]/80 bg-[#111317] shadow-2xl transition-all duration-500 aspect-[3/4] sm:aspect-[4/5] group">
-                
-                {/* User's Uploaded Portrait Photo in Suit */}
+
+                {/* Portrait Photo */}
                 <img
                   src={personalInfo.profileImage}
                   alt={personalInfo.name}
                   className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-102 transition-transform duration-700"
                 />
 
-                {/* Subtle Bottom Vignette Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08090B] via-transparent to-transparent opacity-85" />
+                {/* Subtle bottom vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08090B]/60 via-transparent to-transparent" />
 
-                {/* Corner Technical Crosshairs */}
+                {/* Top corner labels only */}
                 <div className="absolute top-3 left-3 font-mono text-[10px] text-[#D7FF00] bg-[#08090B]/85 px-2.5 py-1 rounded border border-[#292D32] backdrop-blur-md">
                   ID // SHAIK SAMEER
                 </div>
@@ -323,28 +268,9 @@ export default function Hero({ onOpenContact }) {
                 <div className="absolute top-3 right-3 font-mono text-[10px] text-zinc-300 bg-[#08090B]/85 px-2.5 py-1 rounded border border-[#292D32] backdrop-blur-md">
                   HYDERABAD, IN
                 </div>
-
-                {/* Bottom Card Credentials */}
-                <div className="absolute bottom-4 inset-x-4 flex flex-col gap-2">
-                  <div className="flex items-center justify-between text-xs font-mono bg-[#08090B]/90 backdrop-blur-md p-2.5 rounded-xl border border-[#292D32]">
-                    <div className="flex items-center gap-1.5 text-[#D7FF00] font-bold">
-                      <Trophy className="w-3.5 h-3.5" />
-                      <span>1ST PLACE ROBOTICS</span>
-                    </div>
-                    <span className="text-[#A5A7AE] text-[10px]">SNIST & IBS</span>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs font-mono bg-[#08090B]/90 backdrop-blur-md p-2.5 rounded-xl border border-[#292D32]">
-                    <div className="flex items-center gap-1.5 text-white">
-                      <Code2 className="w-3.5 h-3.5 text-[#D7FF00]" />
-                      <span>POLMON INSTRUMENTS</span>
-                    </div>
-                    <span className="text-[#A5A7AE] text-[10px]">MES AUTOMATION</span>
-                  </div>
-                </div>
               </div>
 
-              {/* Floating Monospace Status Badge */}
+              {/* Status line below image — clean single line */}
               <div className="mt-3 flex items-center justify-between font-mono text-xs text-[#A5A7AE] px-2">
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -357,7 +283,7 @@ export default function Hero({ onOpenContact }) {
         </div>
       </div>
 
-      {/* Bottom Ticker / Transition Marker */}
+      {/* Bottom Ticker */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8">
         <div className="flex items-center justify-between font-mono text-xs text-[#A5A7AE] border-t border-[#292D32] pt-4">
           <div className="flex items-center gap-2">
@@ -368,7 +294,7 @@ export default function Hero({ onOpenContact }) {
             href="#projects"
             className="flex items-center gap-1.5 text-[#A5A7AE] hover:text-[#D7FF00] transition-colors"
           >
-            <span>EXPLORE 7 CASE FILES</span>
+            <span>EXPLORE 6 CASE FILES</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>

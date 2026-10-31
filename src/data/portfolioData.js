@@ -292,6 +292,7 @@ export const experienceData = [
     employmentType: "Training Internship",
     duration: "Training Program",
     type: "Python Full Stack Training Internship",
+    completed: true,
     location: "Hyderabad, India",
     highlights: [
       "Completed an intensive Python Full Stack Developer training program covering backend and frontend technologies.",

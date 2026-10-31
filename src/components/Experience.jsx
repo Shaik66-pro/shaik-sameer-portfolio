@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   MapPin,
   Clock,
+  CheckCircle,
 } from 'lucide-react';
 import { experienceData, achievementsData } from '../data/portfolioData';
 
@@ -55,6 +56,12 @@ export default function Experience() {
                       {exp.department}
                     </span>
                     <div className="flex items-center gap-2">
+                      {exp.completed ? (
+                        <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[10px] font-bold uppercase">
+                          <CheckCircle className="w-3 h-3" />
+                          COMPLETED
+                        </span>
+                      ) : null}
                       <Clock className="w-3 h-3 text-[#A5A7AE]" />
                       <span className="font-bold text-[#A5A7AE]">
                         {exp.duration}
