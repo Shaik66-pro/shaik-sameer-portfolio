@@ -16,18 +16,18 @@ export default function About() {
   return (
     <section id="about" className="relative w-full bg-[#F4F0E6] text-[#24211D] py-20 lg:py-28 overflow-hidden border-t border-[#D8C8AD]">
       {/* Chapter 01 Transition Curtain Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-16">
         <div className="border-b border-[#D8C8AD] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <span className="font-mono text-xs tracking-widest text-[#625B51] uppercase block mb-1">
               CHAPTER 01 // DOSSIER
             </span>
-            <h2 className="font-serifDisplay italic text-5xl sm:text-6xl md:text-7xl text-[#24211D] tracking-tight">
+            <h2 className="font-serifDisplay italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#24211D] tracking-tight leading-tight">
               About Me & Academics
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs text-[#625B51]">
+          <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-[#625B51]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#24211D]" />
             <span>VERIFIED CANDIDATE RECORD // MLRIT '25</span>
           </div>

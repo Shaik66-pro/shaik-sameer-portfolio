@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import OwnerResumeManager from './OwnerResumeManager';
+import OwnerResumeManager, { getActiveResumeUrl } from './OwnerResumeManager';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-5 text-[#A5A7AE]">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 text-[#A5A7AE]">
           <a
             href={personalInfo.github}
             target="_blank"
@@ -55,7 +55,7 @@ export default function Footer() {
             <span>Email</span>
           </a>
           <a
-            href={personalInfo.resumeUrl}
+            href={getActiveResumeUrl()}
             download="Shaik_Sameer_Resume.pdf"
             className="hover:text-[#D7FF00] transition-colors flex items-center gap-1 text-[#D7FF00]"
           >

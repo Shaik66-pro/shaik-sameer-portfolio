@@ -16,6 +16,7 @@ import {
   MessageSquare,
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { getActiveResumeUrl } from './OwnerResumeManager';
 
 export default function Contact({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -63,11 +64,11 @@ export default function Contact({ isOpen, onClose }) {
             <span>CHAPTER 05 // FINAL INVITATION</span>
           </div>
 
-          <h2 className="font-display font-black text-6xl sm:text-8xl md:text-9xl tracking-tight uppercase text-3d-white mb-2 leading-none">
+          <h2 className="font-display font-black text-4xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight uppercase text-3d-white mb-2 leading-none">
             ONE LAST THING.
           </h2>
 
-          <p className="font-serifDisplay italic text-2xl sm:text-4xl text-zinc-300 max-w-xl mb-4">
+          <p className="font-serifDisplay italic text-xl sm:text-3xl md:text-4xl text-zinc-300 max-w-xl mb-4">
             "Have an Idea? Let's Build Something Great Together."
           </p>
 
@@ -156,7 +157,7 @@ export default function Contact({ isOpen, onClose }) {
                     </a>
 
                     <a
-                      href={personalInfo.resumeUrl}
+                      href={getActiveResumeUrl()}
                       download="Shaik_Sameer_Resume.pdf"
                       className="px-5 py-2.5 rounded-full bg-white text-[#08090B] font-mono text-xs font-bold hover:bg-zinc-200 transition-colors flex items-center gap-1.5"
                     >

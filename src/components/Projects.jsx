@@ -42,25 +42,25 @@ export default function Projects() {
               <span>— SIX ENGINEERING SYSTEMS</span>
             </div>
 
-            <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
+            <h2 className="font-display font-black text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
               PROJECT DOSSIER
             </h2>
-            <span className="font-serifDisplay italic font-normal text-3xl sm:text-5xl text-[#D7FF00] -mt-1 tracking-normal">
+            <span className="font-serifDisplay italic font-normal text-2xl sm:text-4xl lg:text-5xl text-[#D7FF00] -mt-0.5 sm:-mt-1 tracking-normal">
               Solving Real-World Problems.
             </span>
 
-            <p className="font-sans text-sm sm:text-base text-[#A5A7AE] max-w-2xl mt-4 leading-relaxed">
+            <p className="font-sans text-xs sm:text-sm md:text-base text-[#A5A7AE] max-w-2xl mt-3 sm:mt-4 leading-relaxed">
               Real-world systems engineered across backend architectures and frontend user interfaces.
               Completed production systems are distinguished from actively advancing architectures.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="inline-flex p-1.5 rounded-full bg-[#111317] border border-[#292D32]">
+          <div className="lg:col-span-4 flex justify-start lg:justify-end w-full overflow-x-auto pb-1 sm:pb-0">
+            <div className="inline-flex p-1 sm:p-1.5 rounded-full bg-[#111317] border border-[#292D32] max-w-full">
               <button
                 onClick={() => setActiveFilter('all')}
-                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-[11px] sm:text-xs font-bold transition-all duration-300 ${
                   activeFilter === 'all'
                     ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
                     : 'text-[#A5A7AE] hover:text-white'
@@ -71,7 +71,7 @@ export default function Projects() {
 
               <button
                 onClick={() => setActiveFilter('fullstack')}
-                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-[11px] sm:text-xs font-bold transition-all duration-300 ${
                   activeFilter === 'fullstack'
                     ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
                     : 'text-[#A5A7AE] hover:text-white'
@@ -82,7 +82,7 @@ export default function Projects() {
 
               <button
                 onClick={() => setActiveFilter('frontend')}
-                className={`px-4 py-2 rounded-full font-mono text-xs font-bold transition-all duration-300 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-[11px] sm:text-xs font-bold transition-all duration-300 ${
                   activeFilter === 'frontend'
                     ? 'bg-[#D7FF00] text-[#08090B] shadow-glow-yellow'
                     : 'text-[#A5A7AE] hover:text-white'
@@ -263,12 +263,12 @@ export default function Projects() {
               </div>
 
               {/* Footer */}
-              <div className="pt-4 border-t border-[#292D32] flex items-center justify-between">
+              <div className="pt-4 border-t border-[#292D32] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-full bg-[#08090B] hover:bg-white/10 border border-[#292D32] text-white font-mono text-xs flex items-center gap-2"
+                  className="px-4 sm:px-5 py-2.5 rounded-full bg-[#08090B] hover:bg-white/10 border border-[#292D32] text-white font-mono text-xs flex items-center justify-center gap-2 text-center"
                 >
                   <Github className="w-4 h-4" />
                   <span>CHECK GITHUB PROFILE</span>
@@ -276,7 +276,7 @@ export default function Projects() {
 
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2.5 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-xs font-bold hover:bg-white transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-xs font-bold hover:bg-white transition-colors text-center"
                 >
                   CLOSE DOSSIER
                 </button>

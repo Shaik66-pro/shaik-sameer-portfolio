@@ -18,30 +18,30 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
   return (
     <>
       <header
-        className="relative top-0 left-0 right-0 z-40 bg-[#08090B]/95 backdrop-blur-md border-b border-[#292D32] py-3 shadow-2xl"
+        className="relative top-0 left-0 right-0 z-40 bg-[#08090B]/95 backdrop-blur-md border-b border-[#292D32] py-2.5 sm:py-3 shadow-2xl"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           
           {/* Brand Logo */}
           <a
             href="#"
-            className="group flex items-center gap-2.5 text-white font-mono text-sm tracking-wider"
+            className="group flex items-center gap-2 sm:gap-2.5 text-white font-mono text-xs sm:text-sm tracking-wider min-w-0"
           >
-            <div className="w-9 h-9 rounded-lg bg-[#111317] border border-[#292D32] flex items-center justify-center font-bold font-display text-[#D7FF00] group-hover:border-[#D7FF00] transition-all duration-300 shadow-glow-yellow">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-[#111317] border border-[#292D32] flex items-center justify-center font-bold font-display text-[#D7FF00] text-xs sm:text-sm group-hover:border-[#D7FF00] transition-all duration-300 shadow-glow-yellow">
               SS
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold tracking-tight text-white group-hover:text-[#D7FF00] transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="font-bold tracking-tight text-white group-hover:text-[#D7FF00] transition-colors truncate text-xs sm:text-sm">
                 SHAIK SAMEER
               </span>
-              <span className="text-[10px] text-[#A5A7AE] font-mono tracking-widest uppercase">
+              <span className="text-[9px] sm:text-[10px] text-[#A5A7AE] font-mono tracking-wider sm:tracking-widest uppercase truncate hidden xs:block">
                 EST. {personalInfo.establishedYear} // PYTHON DEVELOPER
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs font-mono tracking-wider">
+          <nav className="hidden lg:flex items-center gap-6 text-xs font-mono tracking-wider shrink-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -55,7 +55,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
           </nav>
 
           {/* Desktop Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3 font-mono text-xs">
+          <div className="hidden sm:flex items-center gap-2.5 md:gap-3 font-mono text-xs shrink-0">
             <a
               href={getActiveResumeUrl()}
               download="Shaik_Sameer_Resume.pdf"
@@ -76,19 +76,19 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden shrink-0">
             <button
               onClick={onOpenContact}
-              className="sm:hidden px-3 py-1.5 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-xs font-bold"
+              className="hidden xs:inline-flex sm:hidden px-2.5 py-1 rounded-full bg-[#D7FF00] text-[#08090B] font-mono text-[11px] font-bold"
             >
               HIRE
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-white/5 border border-[#292D32] text-zinc-300 hover:text-white"
+              className="p-1.5 sm:p-2 rounded-lg bg-white/5 border border-[#292D32] text-zinc-300 hover:text-white"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
             </button>
           </div>
         </div>

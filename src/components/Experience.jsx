@@ -28,10 +28,10 @@ export default function Experience() {
             <span>INDUSTRY WORK & HONORS</span>
           </div>
 
-          <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
+          <h2 className="font-display font-black text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none uppercase text-white text-3d-white">
             THE EVIDENCE
           </h2>
-          <p className="font-mono text-xs sm:text-sm text-[#A5A7AE] mt-3 max-w-xl uppercase tracking-wider">
+          <p className="font-mono text-[11px] sm:text-xs md:text-sm text-[#A5A7AE] mt-3 max-w-xl uppercase tracking-wider">
             Verified Industrial & Training Internship Exposure, Software Engineering Work, and Robotics Achievements.
           </p>
         </div>

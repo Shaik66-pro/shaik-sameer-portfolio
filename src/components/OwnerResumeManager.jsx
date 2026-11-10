@@ -164,14 +164,14 @@ export default function OwnerResumeManager() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[9000] flex items-end sm:items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 z-[9000] flex items-end sm:items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={(e) => { if (e.target === e.currentTarget) { setOpen(false); handleLogout(); } }}
           >
             <motion.div
-              className="w-full max-w-md bg-[#0d0e11] border border-[#292D32] rounded-2xl shadow-2xl p-6 font-mono relative"
+              className="w-full max-w-md bg-[#0d0e11] border border-[#292D32] rounded-2xl shadow-2xl p-4 sm:p-6 font-mono relative max-h-[92vh] overflow-y-auto"
               initial={{ y: 60, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 60, opacity: 0 }}

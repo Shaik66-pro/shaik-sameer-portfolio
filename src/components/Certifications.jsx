@@ -12,24 +12,24 @@ export default function Certifications() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-10 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
           <div>
-            <div className="flex items-center gap-2 font-mono text-xs font-bold tracking-widest uppercase text-[#D7FF00] mb-2">
+            <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs font-bold tracking-widest uppercase text-[#D7FF00] mb-2">
               <Award className="w-4 h-4" />
               <span>ACCREDITATIONS & VERIFICATIONS</span>
             </div>
-            <h2 className="font-serifDisplay italic text-5xl sm:text-6xl text-white tracking-tight leading-none">
+            <h2 className="font-serifDisplay italic text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
               Certifications
             </h2>
           </div>
 
-          <div className="font-mono text-xs text-[#A5A7AE]">
-            <span>FOUR ACCREDITED CREDENTIALS</span>
+          <div className="font-mono text-[11px] sm:text-xs text-[#A5A7AE]">
+            <span>{certificationsData.length} ACCREDITED CREDENTIALS</span>
           </div>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {certificationsData.map((cert) => (
             <div
               key={cert.id}
