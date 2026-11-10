@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Download, Sparkles, Terminal } from 'lucide-react';
+import { Menu, X, Download, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { getActiveResumeUrl } from './OwnerResumeManager';
 
 export default function Navbar({ onOpenContact, onReplayEntrance }) {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: '01 // THE SUBJECT', href: '#subject' },
@@ -26,11 +18,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#08090B]/90 backdrop-blur-md border-b border-[#292D32] py-3 shadow-2xl'
-            : 'bg-transparent py-5'
-        }`}
+        className="relative top-0 left-0 right-0 z-40 bg-[#08090B]/95 backdrop-blur-md border-b border-[#292D32] py-3 shadow-2xl"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
@@ -69,7 +57,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
           {/* Desktop Action Buttons */}
           <div className="hidden sm:flex items-center gap-3 font-mono text-xs">
             <a
-              href={personalInfo.resumeUrl}
+              href={getActiveResumeUrl()}
               download="Shaik_Sameer_Resume.pdf"
               className="px-3.5 py-2 rounded-full border border-[#292D32] text-zinc-300 hover:text-white hover:border-white/50 transition-all duration-200 flex items-center gap-1.5 hover:bg-white/5"
               title="Download Shaik Sameer's Resume"
@@ -114,7 +102,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[60px] z-40 bg-[#08090B]/98 backdrop-blur-xl border-b border-[#292D32] p-6 lg:hidden"
+            className="absolute inset-x-0 top-full z-40 bg-[#08090B]/98 backdrop-blur-xl border-b border-[#292D32] p-6 lg:hidden"
           >
             <nav className="flex flex-col gap-4 font-mono text-sm">
               {navLinks.map((link) => (
@@ -129,7 +117,7 @@ export default function Navbar({ onOpenContact, onReplayEntrance }) {
               ))}
               <div className="pt-4 border-t border-[#292D32] flex flex-col gap-3">
                 <a
-                  href={personalInfo.resumeUrl}
+                  href={getActiveResumeUrl()}
                   download="Shaik_Sameer_Resume.pdf"
                   className="w-full py-2.5 rounded-lg border border-[#292D32] text-center font-mono text-xs text-white flex items-center justify-center gap-2"
                 >

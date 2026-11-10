@@ -399,4 +399,13 @@ export const certificationsData = [
     description: "Recognized for competitive robotics problem-solving and rapid prototype development.",
     tag: "IBS",
   },
+  {
+    id: "cert-5",
+    title: "AI/ML Certification of Fundamentals",
+    issuer: "NSDC / Skill India",
+    year: "2024",
+    category: "AI / ML",
+    description: "Certified in core Artificial Intelligence and Machine Learning fundamentals including supervised learning, model evaluation, and data preprocessing.",
+    tag: "AI/ML",
+  },
 ];

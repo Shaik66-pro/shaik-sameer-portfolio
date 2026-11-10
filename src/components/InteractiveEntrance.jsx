@@ -80,8 +80,8 @@ export default function InteractiveEntrance({ onComplete }) {
             width: '100%',
             height: '100%',
             /* contain = show full frame with no cropping; letterbox with black bars */
-            objectFit: 'contain',
-            objectPosition: 'center',
+            objectFit: 'cover',
+            objectPosition: 'center center',
             backgroundColor: '#000',
           }}
         />

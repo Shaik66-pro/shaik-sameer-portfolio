@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import StarBackground from './components/StarBackground';
+import { getActiveResumeUrl } from './components/OwnerResumeManager';
 
 export default function App() {
   const [showEntrance, setShowEntrance] = useState(true);

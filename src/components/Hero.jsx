@@ -10,6 +10,7 @@ import {
   GraduationCap,
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { getActiveResumeUrl } from './OwnerResumeManager';
 
 export default function Hero({ onOpenContact }) {
   const containerRef = useRef(null);
@@ -51,12 +52,20 @@ export default function Hero({ onOpenContact }) {
     const particleSystem = new THREE.Points(geometry, pMaterial);
     scene.add(particleSystem);
 
-    // Floating wireframe ico
-    const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
-    const icoMat = new THREE.MeshBasicMaterial({ color: 0xd7ff00, wireframe: true, transparent: true, opacity: 0.22 });
+    // Floating wireframe ico — positioned beside the profile photo (right side, mid-height)
+    const icoGeo = new THREE.IcosahedronGeometry(2.8, 1);
+    const icoMat = new THREE.MeshBasicMaterial({ color: 0xd7ff00, wireframe: true, transparent: true, opacity: 0.28 });
     const icoMesh = new THREE.Mesh(icoGeo, icoMat);
-    icoMesh.position.set(16, 5, -5);
+    // x≈8 keeps it at the right side within view; y≈2 sits at upper-mid; z=-2 gives depth
+    icoMesh.position.set(8, 2, -2);
     scene.add(icoMesh);
+
+    // Second smaller orb for depth — slightly offset
+    const icoGeo2 = new THREE.IcosahedronGeometry(1.4, 1);
+    const icoMat2 = new THREE.MeshBasicMaterial({ color: 0xd7ff00, wireframe: true, transparent: true, opacity: 0.14 });
+    const icoMesh2 = new THREE.Mesh(icoGeo2, icoMat2);
+    icoMesh2.position.set(11, -3, -4);
+    scene.add(icoMesh2);
 
     let animId;
     const clock = new THREE.Clock();
@@ -64,8 +73,14 @@ export default function Hero({ onOpenContact }) {
       const t = clock.getElapsedTime();
       particleSystem.rotation.y = t * 0.025;
       particleSystem.rotation.x = t * 0.012;
-      icoMesh.rotation.x = t * 0.18;
-      icoMesh.rotation.y = t * 0.22;
+      // Main orb: gentle float — bob up/down slowly
+      icoMesh.rotation.x = t * 0.14;
+      icoMesh.rotation.y = t * 0.18;
+      icoMesh.position.y = 2 + Math.sin(t * 0.6) * 0.6;
+      // Small orb: counter-rotate
+      icoMesh2.rotation.x = t * 0.22;
+      icoMesh2.rotation.z = t * 0.16;
+      icoMesh2.position.y = -3 + Math.sin(t * 0.9 + 1.2) * 0.4;
       renderer.render(scene, camera);
       animId = requestAnimationFrame(animate);
     };
@@ -89,7 +104,7 @@ export default function Hero({ onOpenContact }) {
     <section
       id="subject"
       ref={containerRef}
-      className="relative w-full min-h-screen bg-[#08090B] text-white overflow-hidden flex flex-col justify-between pt-24 pb-12 select-none"
+      className="relative w-full min-h-screen bg-[#08090B] text-white overflow-x-hidden flex flex-col justify-between pt-10 pb-12 select-none"
     >
       {/* WebGL canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
@@ -117,10 +132,10 @@ export default function Hero({ onOpenContact }) {
           3-col grid:  [left-content spans cols 1+2] [image gets col 3]
           This gives ~62% to text and ~38% to the image, with a guaranteed gap.
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[62%_38%] gap-6 lg:gap-10 items-center">
 
           {/* ── LEFT COLUMN — takes 2 of 3 cols ─────────────────────────── */}
-          <div className="lg:col-span-2 flex flex-col items-start text-left">
+          <div className="lg:col-span-1 flex flex-col items-start text-left min-w-0">
 
             {/* Primary language badge */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -136,18 +151,23 @@ export default function Hero({ onOpenContact }) {
             </div>
 
             {/* ── SAMEER heading ──
-                Key fixes:
-                  • fluid font clamped at 7rem max so it stays within its col
-                  • overflow-visible + whitespace-nowrap keeps the word whole
-                  • 3-col layout gives this column 2/3 of available width
+                Key fixes applied:
+                  • clamp(3rem,6.5vw,5.5rem) keeps "SAMEER" fully in its column
+                  • letter-spacing: -0.02em → tighter, so word is narrower
+                  • overflow-visible + whitespace-nowrap keeps whole word
+                  • 62% column gives text plenty of room
             */}
             <div className="w-full overflow-visible mb-3">
               <h1
-                className="font-display font-black leading-none uppercase text-white text-3d-white tracking-tight"
+                className="font-display font-black leading-none uppercase text-white text-3d-white"
                 style={{
-                  fontSize: 'clamp(3.5rem, 8vw, 7rem)',
-                  wordBreak: 'keep-all',
+                  fontSize: 'clamp(3rem, 6.5vw, 5.5rem)',
+                  letterSpacing: '-0.02em',
                   whiteSpace: 'nowrap',
+                  wordBreak: 'keep-all',
+                  display: 'block',
+                  width: 'max-content',
+                  maxWidth: '100%',
                 }}
               >
                 {personalInfo.firstName}
@@ -189,7 +209,7 @@ export default function Hero({ onOpenContact }) {
               </a>
 
               <a
-                href={personalInfo.resumeUrl}
+                href={getActiveResumeUrl()}
                 download="Shaik_Sameer_Resume.pdf"
                 className="px-5 py-3.5 rounded-full bg-[#111317] hover:bg-white/10 border border-[#292D32] hover:border-white/40 text-white font-medium tracking-wider transition-all duration-300 flex items-center gap-2 active:scale-95"
               >
@@ -219,8 +239,8 @@ export default function Hero({ onOpenContact }) {
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN — portrait card in col 3 ──────────────────── */}
-          <div className="lg:col-span-1 flex justify-center lg:justify-end w-full">
+          {/* ── RIGHT COLUMN — portrait card ──────────────────────────── */}
+          <div className="flex justify-center lg:justify-end w-full">
             {/* Portrait capped so it never bleeds left */}
             <div className="relative w-full" style={{ maxWidth: '340px' }}>
               <div className="relative rounded-2xl overflow-hidden border-2 border-[#292D32] hover:border-[#D7FF00]/80 bg-[#111317] shadow-2xl transition-all duration-500 group"

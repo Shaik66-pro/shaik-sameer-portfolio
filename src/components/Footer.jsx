@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import OwnerResumeManager from './OwnerResumeManager';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -81,6 +82,11 @@ export default function Footer() {
         <span>
           MLR Institute of Technology, Hyderabad (Class of 2025)
         </span>
+      </div>
+
+      {/* ── Private Owner Resume Manager — only visible if you know it's here ── */}
+      <div className="max-w-7xl mx-auto mt-4 pb-2 flex justify-end">
+        <OwnerResumeManager />
       </div>
     </footer>
   );

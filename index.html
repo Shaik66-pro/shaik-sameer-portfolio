@@ -2,15 +2,99 @@
 <html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+    <!-- ═══════════ FAVICON ═══════════ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2308090B'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='monospace' font-weight='900' fill='%23D7FF00'>SS</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shaik Sameer — Python Full Stack Developer</title>
-    <meta name="description" content="Portfolio of Shaik Sameer — Python Full Stack Developer & B.Tech ECE '25. Building digital experiences and scalable backend architectures that solve real-world problems." />
-    
-    <!-- Google Fonts Preconnect -->
+
+    <!-- ═══════════ PRIMARY SEO ═══════════ -->
+    <title>Shaik Sameer | Python Developer — FastAPI, Django, Flask, React | Hyderabad</title>
+    <meta name="description" content="Shaik Sameer is a Python Developer from Hyderabad, India. B.Tech ECE graduate (MLR Institute of Technology, 2025) skilled in FastAPI, Django, Flask, React, MySQL and REST APIs. Available for full-time roles." />
+    <meta name="keywords" content="Shaik Sameer, Python Developer, Python Full Stack Developer, FastAPI Developer, Django Developer, Flask Developer, React Developer, Hyderabad Python Developer, MLR Institute of Technology, Backend Developer, REST API, MySQL, Full Stack Developer India, Shaik Sameer Portfolio, Shaik Sameer Python" />
+    <meta name="author" content="Shaik Sameer" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://shaik-sameer.vercel.app/" />
+
+    <!-- ═══════════ OPEN GRAPH (Facebook / LinkedIn / WhatsApp) ═══════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shaik-sameer.vercel.app/" />
+    <meta property="og:title" content="Shaik Sameer | Python Developer — Portfolio" />
+    <meta property="og:description" content="Python Developer from Hyderabad. FastAPI · Django · Flask · React · MySQL. Open to full-time opportunities. View portfolio, projects and resume." />
+    <meta property="og:image" content="https://shaik-sameer.vercel.app/sameer_studio.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Shaik Sameer — Python Developer Portfolio" />
+
+    <!-- ═══════════ TWITTER CARD ═══════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shaik Sameer | Python Developer — Portfolio" />
+    <meta name="twitter:description" content="Python Developer from Hyderabad. FastAPI · Django · Flask · React · MySQL. Open to full-time opportunities." />
+    <meta name="twitter:image" content="https://shaik-sameer.vercel.app/sameer_studio.png" />
+
+    <!-- ═══════════ STRUCTURED DATA — Person + WebSite ═══════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://shaik-sameer.vercel.app/#person",
+          "name": "Shaik Sameer",
+          "jobTitle": "Python Developer",
+          "description": "Python Developer specialising in FastAPI, Django, Flask, React and MySQL. B.Tech ECE graduate from MLR Institute of Technology, Hyderabad (2025).",
+          "url": "https://shaik-sameer.vercel.app/",
+          "image": "https://shaik-sameer.vercel.app/sameer_studio.png",
+          "email": "sameernawab66@gmail.com",
+          "telephone": "+918367078316",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hyderabad",
+            "addressRegion": "Telangana",
+            "addressCountry": "IN"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "MLR Institute of Technology",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Hyderabad",
+              "addressRegion": "Telangana",
+              "addressCountry": "IN"
+            }
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/shaik-sameer-401953301/",
+            "https://github.com/Shaik66-pro"
+          ],
+          "knowsAbout": [
+            "Python", "FastAPI", "Django", "Flask", "React",
+            "MySQL", "SQLite", "REST APIs", "JWT Authentication",
+            "HTML", "CSS", "Bootstrap", "JavaScript",
+            "Git", "GitHub", "Postman", "Swagger"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://shaik-sameer.vercel.app/#website",
+          "url": "https://shaik-sameer.vercel.app/",
+          "name": "Shaik Sameer — Python Developer Portfolio",
+          "description": "Professional portfolio of Shaik Sameer, Python Developer from Hyderabad.",
+          "author": { "@id": "https://shaik-sameer.vercel.app/#person" },
+          "inLanguage": "en-IN"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════ GOOGLE FONTS ═══════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- ═══════════ PERFORMANCE HINTS ═══════════ -->
+    <link rel="preload" href="/sameer_studio.png" as="image" />
+    <meta name="theme-color" content="#08090B" />
   </head>
   <body class="bg-obsidian-950 text-white selection:bg-cyber-yellow selection:text-black overflow-x-hidden antialiased">
     <div id="root"></div>

@@ -1,0 +1,10 @@
+# robots.txt — Shaik Sameer Portfolio
+# Allow all search engines to index the public portfolio
+
+User-agent: *
+Allow: /
+
+# Disallow nothing — this is a public portfolio
+# (The private resume manager is a client-side UI gate, not a separate URL)
+
+Sitemap: https://shaik-sameer.vercel.app/sitemap.xml
